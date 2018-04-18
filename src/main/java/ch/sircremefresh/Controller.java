@@ -7,6 +7,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventTarget;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -94,8 +95,15 @@ public class Controller {
 
 	@FXML
 	public void updateSearchHints() {
-		val station = new StationDto();
-		station.setName("dd");
-		fromHints.add(station);
+		val result = transportService.getConntection(fromTextField.getText(), toTextField.getText());
+		System.out.println(result);
+	}
+
+	private void showInfoBox(String title, String msg, Alert.AlertType alertType) {
+		Alert alert = new Alert(alertType);
+		alert.setTitle(title);
+		alert.setHeaderText(null);
+		alert.setContentText(msg);
+		alert.showAndWait();
 	}
 }
