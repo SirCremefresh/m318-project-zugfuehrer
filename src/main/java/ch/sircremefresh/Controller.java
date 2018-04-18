@@ -3,7 +3,6 @@ package ch.sircremefresh;
 import ch.sircremefresh.transport.TransportService;
 import ch.sircremefresh.transport.dto.StationDto;
 import com.sun.javafx.scene.control.skin.LabeledText;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventTarget;
@@ -20,6 +19,7 @@ public class Controller {
 	private TransportService transportService = new TransportService();
 
 	private ObservableList<StationDto> fromHints = FXCollections.observableArrayList();
+	private ObservableList<StationDto> toHints = FXCollections.observableArrayList();
 
 	private Callback<ListView<StationDto>, ListCell<StationDto>> StationDtoCellFactory = (ListView<StationDto> p) -> new ListCell<StationDto>() {
 		@Override
@@ -38,15 +38,22 @@ public class Controller {
 	private ListView<StationDto> fromHintsListView;
 
 	@FXML
+	private TextField toTextField;
+
+	@FXML
+	private ListView<StationDto> toHintsListView;
+
+	@FXML
 	public void initialize() {
-		initializeFromTextField();
+		initializeStationSearcherField(fromTextField, fromHintsListView, fromHints);
+		initializeStationSearcherField(toTextField, toHintsListView, toHints);
 	}
 
-	private void initializeFromTextField() {
-		fromHintsListView.setCellFactory(StationDtoCellFactory);
-		fromHintsListView.setItems(fromHints);
+	private void initializeStationSearcherField(TextField textField, ListView<StationDto> listView, ObservableList<StationDto> hints) {
+		listView.setCellFactory(StationDtoCellFactory);
+		listView.setItems(hints);
 
-		fromHintsListView.setOnMouseClicked((mouseEvent) -> {
+		listView.setOnMouseClicked((mouseEvent) -> {
 			EventTarget target = mouseEvent.getTarget();
 			String station;
 			if (target instanceof ListCell && ((ListCell) target).getText() != null) {
@@ -54,26 +61,26 @@ public class Controller {
 			} else if (target instanceof LabeledText) {
 				station = ((LabeledText) target).getText();
 			} else {
-				fromHintsListView.visibleProperty().setValue(false);
+				listView.visibleProperty().setValue(false);
 				return;
 			}
-			fromTextField.setText(station);
-			setFocusOnTextField(fromTextField);
+			textField.setText(station);
+			setFocusOnTextField(textField);
 		});
 
-		fromTextField.textProperty().addListener((observable, oldValue, newValue) -> {
+		textField.textProperty().addListener((observable, oldValue, newValue) -> {
 			List<StationDto> stations = transportService.getStations(newValue);
-			fromHints.clear();
-			fromHints.addAll(stations);
+			hints.clear();
+			hints.addAll(stations);
 		});
 
-		fromTextField.focusedProperty().addListener((ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue) -> {
-			fromHintsListView.visibleProperty().setValue(newPropertyValue || fromHintsListView.focusedProperty().getValue());
+		textField.focusedProperty().addListener((arg0, oldPropertyValue, newPropertyValue) -> {
+			listView.visibleProperty().setValue(newPropertyValue || listView.focusedProperty().getValue());
 		});
 	}
 
 	private StationDto getStationWithNameFromList(String stationName, List<StationDto> list) {
-		for(val item: list) {
+		for (val item : list) {
 			if (item.getName().toLowerCase().equals(stationName))
 				return item;
 		}

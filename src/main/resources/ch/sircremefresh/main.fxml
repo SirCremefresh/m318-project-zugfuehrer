@@ -1,34 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.sircremefresh.Controller">
-   <children>
-      <TabPane layoutX="32.0" prefHeight="500.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <tabs>
-          <Tab text="fahrplan">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <TextField fx:id="fromTextField" layoutX="42.0" layoutY="38.0" />
-                        <ListView fx:id="fromHintsListView" layoutX="43.0" layoutY="65.0" prefHeight="123.0" prefWidth="166.0" styleClass="drop-down" />
-                        <Button layoutX="251.0" layoutY="52.0" mnemonicParsing="false" onAction="#updateSearchHints" text="Button" />
-                     </children>
-                  </AnchorPane>
-            </content>
-          </Tab>
-          <Tab text="abfahrtstafel">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-            </content>
-          </Tab>
-        </tabs>
-      </TabPane>
-   </children>
+    <children>
+        <TabPane layoutX="32.0" prefHeight="500.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <tabs>
+                <Tab text="fahrplan">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <TextField fx:id="fromTextField" layoutX="42.0" layoutY="38.0" />
+                                <TextField fx:id="toTextField" layoutX="247.0" layoutY="38.0" />
+                                <Button layoutX="476.0" layoutY="38.0" mnemonicParsing="false" onAction="#updateSearchHints" text="Button" />
+                                <ListView fx:id="toHintsListView" layoutX="248.0" layoutY="65.0" prefHeight="123.0" prefWidth="166.0" styleClass="drop-down" />
+                                <ListView fx:id="fromHintsListView" layoutX="43.0" layoutY="65.0" prefHeight="123.0" prefWidth="166.0" styleClass="drop-down" />
+                                <Label layoutX="42.0" layoutY="14.0" text="From:" />
+                                <Label layoutX="248.0" layoutY="14.0" text="To:" />
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="abfahrtstafel">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </children>
 </AnchorPane>
