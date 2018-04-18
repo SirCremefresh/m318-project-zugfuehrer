@@ -8,7 +8,7 @@ import lombok.ToString;
 @Getter
 @Setter
 public class ConnectionDto {
-	public ConnectionPointDto from;
-	public ConnectionPointDto to;
-	public String duration;
+	private ConnectionPointDto from;
+	private ConnectionPointDto to;
+	private String duration;
 }

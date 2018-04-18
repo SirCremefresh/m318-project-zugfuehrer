@@ -27,7 +27,8 @@ public class TransportService {
 		JSONObject responseObject = response.getEntity(JSONObject.class);
 
 		try {
-			Type StationDtoListType = new TypeToken<List<StationDto>>() {}.getType();
+			Type StationDtoListType = new TypeToken<List<StationDto>>() {
+			}.getType();
 			val stationsJsonArray = responseObject.getJSONArray("stations");
 			return gson.fromJson(stationsJsonArray.toString(), StationDtoListType);
 		} catch (JSONException e) {
@@ -43,7 +44,8 @@ public class TransportService {
 		JSONObject responseObject = response.getEntity(JSONObject.class);
 
 		try {
-			Type ConnectionDtoListType = new TypeToken<List<ConnectionDto>>() {}.getType();
+			Type ConnectionDtoListType = new TypeToken<List<ConnectionDto>>() {
+			}.getType();
 			val connectionsJsonArray = responseObject.getJSONArray("connections");
 			return gson.fromJson(connectionsJsonArray.toString(), ConnectionDtoListType);
 		} catch (JSONException e) {
@@ -77,7 +79,7 @@ public class TransportService {
 
 	private String urlEncode(final String url) {
 		try {
-			return URLEncoder.encode(url,  "UTF-8");
+			return URLEncoder.encode(url, "UTF-8");
 		} catch (UnsupportedEncodingException e) {
 			throw new TransportApiException("An error occurred while urlEncoding");
 		}
