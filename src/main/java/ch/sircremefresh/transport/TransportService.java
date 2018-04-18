@@ -35,7 +35,7 @@ public class TransportService {
 		}
 	}
 
-	public List<ConnectionDto> getConntection(final String from, final String to) {
+	public List<ConnectionDto> getConnections(final String from, final String to) {
 		val gson = getGson();
 
 		val response = createGetRequest("http://transport.opendata.ch/v1/connections?from=" + urlEncode(from) + "&to=" + urlEncode(to));

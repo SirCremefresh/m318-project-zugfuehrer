@@ -5,6 +5,8 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
@@ -16,13 +18,19 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
-                                <TextField fx:id="fromTextField" layoutX="42.0" layoutY="38.0" />
-                                <TextField fx:id="toTextField" layoutX="247.0" layoutY="38.0" />
-                                <Button layoutX="476.0" layoutY="38.0" mnemonicParsing="false" onAction="#updateSearchHints" text="Button" />
-                                <ListView fx:id="toHintsListView" layoutX="248.0" layoutY="65.0" prefHeight="123.0" prefWidth="166.0" styleClass="drop-down" />
-                                <ListView fx:id="fromHintsListView" layoutX="43.0" layoutY="65.0" prefHeight="123.0" prefWidth="166.0" styleClass="drop-down" />
-                                <Label layoutX="42.0" layoutY="14.0" text="From:" />
-                                <Label layoutX="248.0" layoutY="14.0" text="To:" />
+                                <TextField fx:id="fromTextField" layoutX="42.0" layoutY="38.0" prefWidth="250.0" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="40.0" />
+                                <TextField fx:id="toTextField" layoutX="321.0" layoutY="40.0" prefWidth="250.0" AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="40.0" />
+                                <Button layoutX="598.0" layoutY="40.0" mnemonicParsing="false" onAction="#updateSearchHints" text="Button" AnchorPane.leftAnchor="598.0" AnchorPane.topAnchor="40.0" />
+                                <TableView layoutX="41.0" layoutY="91.0" prefHeight="291.0" prefWidth="799.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="120.0">
+                                    <columns>
+                                        <TableColumn prefWidth="75.0" text="C1" />
+                                        <TableColumn prefWidth="75.0" text="C2" />
+                                    </columns>
+                                </TableView>
+                                <ListView fx:id="toHintsListView" layoutX="248.0" layoutY="65.0" prefHeight="186.0" prefWidth="250.0" styleClass="drop-down" visible="false" AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="65.0" />
+                                <ListView fx:id="fromHintsListView" layoutX="43.0" layoutY="65.0" prefHeight="186.0" prefWidth="250.0" styleClass="drop-down" visible="false" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="65.0" />
+                                <Label layoutX="42.0" layoutY="14.0" text="From:" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="15.0" />
+                                <Label layoutX="248.0" layoutY="14.0" text="To:" AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="15.0" />
                             </children>
                         </AnchorPane>
                     </content>

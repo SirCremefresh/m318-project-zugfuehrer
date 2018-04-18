@@ -72,7 +72,11 @@ public class Controller {
 		textField.textProperty().addListener((observable, oldValue, newValue) -> {
 			List<StationDto> stations = transportService.getStations(newValue);
 			hints.clear();
-			hints.addAll(stations);
+			for(int i = 0; i < stations.size(); i++) {
+				if (i > 5 )
+					break;
+				hints.add(stations.get(i));
+			}
 		});
 
 		textField.focusedProperty().addListener((arg0, oldPropertyValue, newPropertyValue) -> {
@@ -95,7 +99,7 @@ public class Controller {
 
 	@FXML
 	public void updateSearchHints() {
-		val result = transportService.getConntection(fromTextField.getText(), toTextField.getText());
+		val result = transportService.getConnections(fromTextField.getText(), toTextField.getText());
 		System.out.println(result);
 	}
 
