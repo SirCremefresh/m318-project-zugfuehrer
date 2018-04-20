@@ -1,5 +1,6 @@
 package ch.sircremefresh;
 
+import ch.sircremefresh.controls.autocomplete.AutoCompleteController;
 import ch.sircremefresh.transport.TransportService;
 import ch.sircremefresh.transport.dto.ConnectionDto;
 import ch.sircremefresh.transport.dto.StationDto;
@@ -10,9 +11,12 @@ import javafx.collections.ObservableList;
 import javafx.event.EventTarget;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.util.Callback;
 import lombok.val;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class Controller {
@@ -34,83 +38,57 @@ public class Controller {
 	};
 
 	@FXML
-	private TextField fromTextField;
+	private AutoCompleteController fromAutoComplete;
 
 	@FXML
-	private ListView<StationDto> fromHintsListView;
+	private AutoCompleteController toAutoComplete;
 
 	@FXML
-	private TextField toTextField;
+	private TableView<ConnectionDto> connectionTableView;
 
 	@FXML
-	private ListView<StationDto> toHintsListView;
+	private TableColumn<ConnectionDto, String> connectionTableFromColumn;
 
 	@FXML
-	private TableView<ConnectionDto> connectionTable;
+	private TableColumn<ConnectionDto, String> connectionTableToColumn;
 
 	@FXML
-	private TableColumn<ConnectionDto, String> departureTimeColumn;
+	private TableColumn<ConnectionDto, String> connectionTableDepartureTimeColumn;
 
 	@FXML
-	private TableColumn<ConnectionDto, String> fromColumn;
+	private TableColumn<ConnectionDto, String> connectionTableArrivalTimeColumn;
 
 	@FXML
-	private TableColumn<ConnectionDto, String> toColumn;
-
-	@FXML
-	private TableColumn<ConnectionDto, String> arrivalTimeColumn;
-
-	@FXML
-	private TableColumn<ConnectionDto, String> durationColumn;
+	private TableColumn<ConnectionDto, String> connectionTableDurationColumn;
 
 	@FXML
 	public void initialize() {
-		initializeStationSearcherField(fromTextField, fromHintsListView, fromHints);
-		initializeStationSearcherField(toTextField, toHintsListView, toHints);
+
+		initializeAutoComplete(fromAutoComplete);
+		initializeAutoComplete(toAutoComplete);
 		initializeConnectionTable();
 	}
 
-	private void initializeStationSearcherField(TextField textField, ListView<StationDto> listView, ObservableList<StationDto> hints) {
-		listView.setCellFactory(StationDtoCellFactory);
-		listView.setItems(hints);
-
-		listView.setOnMouseClicked((mouseEvent) -> {
-			EventTarget target = mouseEvent.getTarget();
-			String station;
-			if (target instanceof ListCell && ((ListCell) target).getText() != null) {
-				station = ((ListCell) target).getText();
-			} else if (target instanceof LabeledText) {
-				station = ((LabeledText) target).getText();
-			} else {
-				listView.visibleProperty().setValue(false);
-				return;
-			}
-			textField.setText(station);
-			setFocusOnTextField(textField);
-		});
-
-		textField.textProperty().addListener((observable, oldValue, newValue) -> {
+	private void initializeAutoComplete(AutoCompleteController autoComplete) {
+		autoComplete.getTextProperty().addListener((observable, oldValue, newValue) -> {
 			List<StationDto> stations = transportService.getStations(newValue);
-			hints.clear();
+			List<String> hints = new LinkedList<>();
 			for (int i = 0; i < stations.size(); i++) {
 				if (i > 5)
 					break;
-				hints.add(stations.get(i));
+				hints.add(stations.get(i).getName());
 			}
-		});
-
-		textField.focusedProperty().addListener((arg0, oldPropertyValue, newPropertyValue) -> {
-			listView.visibleProperty().setValue(newPropertyValue || listView.focusedProperty().getValue());
+			autoComplete.setHints(hints);
 		});
 	}
 
 	private void initializeConnectionTable() {
-		connectionTable.setItems(connections);
-		fromColumn.setCellValueFactory(cd -> Bindings.createStringBinding(() -> cd.getValue().getFrom().getStation().getName()));
-		toColumn.setCellValueFactory(cd -> Bindings.createStringBinding(() -> cd.getValue().getTo().getStation().getName()));
-		departureTimeColumn.setCellValueFactory(cd -> Bindings.createStringBinding(() -> cd.getValue().getFrom().getFormattedDepartureTime()));
-		arrivalTimeColumn.setCellValueFactory(cd -> Bindings.createStringBinding(() -> cd.getValue().getTo().getFormattedArrivalTime()));
-		durationColumn.setCellValueFactory(cd -> Bindings.createStringBinding(() -> {
+		connectionTableView.setItems(connections);
+		connectionTableFromColumn.setCellValueFactory(cd -> Bindings.createStringBinding(() -> cd.getValue().getFrom().getStation().getName()));
+		connectionTableToColumn.setCellValueFactory(cd -> Bindings.createStringBinding(() -> cd.getValue().getTo().getStation().getName()));
+		connectionTableDepartureTimeColumn.setCellValueFactory(cd -> Bindings.createStringBinding(() -> cd.getValue().getFrom().getFormattedDepartureTime()));
+		connectionTableArrivalTimeColumn.setCellValueFactory(cd -> Bindings.createStringBinding(() -> cd.getValue().getTo().getFormattedArrivalTime()));
+		connectionTableDurationColumn.setCellValueFactory(cd -> Bindings.createStringBinding(() -> {
 			String duration = cd.getValue().getDuration();
 			String formattedDuration = "";
 			int days = Integer.parseInt(duration.substring(0, 2));
@@ -141,25 +119,25 @@ public class Controller {
 
 	@FXML
 	public void searchConnections() {
-		if (fromTextField.getText().isEmpty()) {
+		if (fromAutoComplete.getText().isEmpty()) {
 			showInfoBox("from station is empty", "the from station input can't be left empty", Alert.AlertType.WARNING);
 			return;
 		}
-		if (toTextField.getText().isEmpty()) {
+		if (toAutoComplete.getText().isEmpty()) {
 			showInfoBox("to station is empty", "the to station input can't be left empty", Alert.AlertType.WARNING);
 			return;
 		}
 		if (fromHints.size() == 0) {
-			showInfoBox("could not find station", "the station: " + fromTextField.getText() + " could not be found", Alert.AlertType.WARNING);
+			showInfoBox("could not find station", "the station: " + fromAutoComplete.getText() + " could not be found", Alert.AlertType.WARNING);
 			return;
 		}
 		if (toHints.size() == 0) {
-			showInfoBox("could not find station", "the station: " + toTextField.getText() + " could not be found", Alert.AlertType.WARNING);
+			showInfoBox("could not find station", "the station: " + toAutoComplete.getText() + " could not be found", Alert.AlertType.WARNING);
 			return;
 		}
-		fromTextField.setText(fromHints.get(0).getName());
-		toTextField.setText(toHints.get(0).getName());
-		val result = transportService.getConnections(fromTextField.getText(), toTextField.getText());
+		fromAutoComplete.setText(fromHints.get(0).getName());
+		toAutoComplete.setText(toHints.get(0).getName());
+		val result = transportService.getConnections(fromAutoComplete.getText(), toAutoComplete.getText());
 		connections.clear();
 		connections.addAll(result);
 	}

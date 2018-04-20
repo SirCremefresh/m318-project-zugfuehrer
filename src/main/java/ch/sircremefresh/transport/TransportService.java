@@ -2,6 +2,7 @@ package ch.sircremefresh.transport;
 
 import ch.sircremefresh.transport.dto.ConnectionDto;
 import ch.sircremefresh.transport.dto.StationDto;
+import ch.sircremefresh.transport.dto.StationboardDto;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -44,13 +45,26 @@ public class TransportService {
 		JSONObject responseObject = response.getEntity(JSONObject.class);
 
 		try {
-			Type ConnectionDtoListType = new TypeToken<List<ConnectionDto>>() {
+			Type connectionDtoListType = new TypeToken<List<ConnectionDto>>() {
 			}.getType();
 			val connectionsJsonArray = responseObject.getJSONArray("connections");
-			return gson.fromJson(connectionsJsonArray.toString(), ConnectionDtoListType);
+			return gson.fromJson(connectionsJsonArray.toString(), connectionDtoListType);
 		} catch (JSONException e) {
 			throw new TransportApiException("An error occurred when parsing server response", e);
 		}
+	}
+
+	public List<StationDto> getStationboard(String station) {
+		val gson = getGson();
+
+		val response = createGetRequest("http://transport.opendata.ch/v1/stationboard?Station=" + urlEncode(station));
+
+		val responseString = response.getEntity(String.class);
+
+
+		Type stationboardDtoListType = new TypeToken<List<StationboardDto>>() {
+		}.getType();
+		return gson.fromJson(responseString, stationboardDtoListType);
 	}
 
 	private ClientResponse createGetRequest(final String url) {

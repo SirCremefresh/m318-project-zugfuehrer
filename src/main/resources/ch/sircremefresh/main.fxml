@@ -9,6 +9,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import ch.sircremefresh.controls.autocomplete.AutoCompleteController ?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.sircremefresh.Controller">
     <children>
@@ -18,20 +19,21 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
-                                <TextField fx:id="fromTextField" layoutX="42.0" layoutY="38.0" onAction="#searchConnections" prefWidth="250.0" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="40.0" />
-                                <TextField fx:id="toTextField" layoutX="321.0" layoutY="40.0" onAction="#searchConnections" prefWidth="250.0" AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="40.0" />
-                                <Button layoutX="598.0" layoutY="40.0" mnemonicParsing="false" onAction="#searchConnections" text="Button" AnchorPane.leftAnchor="598.0" AnchorPane.topAnchor="40.0" />
-                                <TableView fx:id="connectionTable" layoutX="41.0" layoutY="91.0" prefHeight="291.0" prefWidth="799.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="120.0">
+
+                                <TableView fx:id="connectionTableView" layoutX="41.0" layoutY="91.0" prefHeight="291.0" prefWidth="799.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="120.0">
                                     <columns>
-                              <TableColumn fx:id="fromColumn" prefWidth="207.37356185913086" text="From" />
-                              <TableColumn fx:id="toColumn" prefWidth="191.40582275390625" text="To" />
-                                        <TableColumn fx:id="departureTimeColumn" editable="false" prefWidth="145.09417724609375" sortable="false" text="abfahrtszeit" />
-                                        <TableColumn fx:id="arrivalTimeColumn" editable="false" minWidth="0.0" prefWidth="127.72164916992188" sortable="false" text="ankunft" />
-                              <TableColumn fx:id="durationColumn" editable="false" minWidth="0.0" prefWidth="149.03387451171875" text="dauer" />
+                              <TableColumn fx:id="connectionTableFromColumn" prefWidth="207.37356185913086" text="From" />
+                              <TableColumn fx:id="connectionTableToColumn" prefWidth="191.40582275390625" text="To" />
+                                        <TableColumn fx:id="connectionTableDepartureTimeColumn" editable="false" prefWidth="145.09417724609375" sortable="false" text="abfahrtszeit" />
+                                        <TableColumn fx:id="connectionTableArrivalTimeColumn" editable="false" minWidth="0.0" prefWidth="127.72164916992188" sortable="false" text="ankunft" />
+                              <TableColumn fx:id="connectionTableDurationColumn" editable="false" minWidth="0.0" prefWidth="149.03387451171875" text="dauer" />
                                     </columns>
                                 </TableView>
-                                <ListView fx:id="toHintsListView" layoutX="248.0" layoutY="65.0" prefHeight="186.0" prefWidth="250.0" styleClass="drop-down" visible="false" AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="65.0" />
-                                <ListView fx:id="fromHintsListView" layoutX="43.0" layoutY="65.0" prefHeight="186.0" prefWidth="250.0" styleClass="drop-down" visible="false" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="65.0" />
+                                <AutoCompleteController fx:id="fromAutoComplete" layoutX="42.0" layoutY="38.0" prefWidth="250.0" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="40.0"/>
+
+                                <AutoCompleteController fx:id="toAutoComplete" layoutX="321.0" layoutY="40.0" prefWidth="250.0" AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="40.0"/>
+                                <Button layoutX="598.0" layoutY="40.0" mnemonicParsing="false" onAction="#searchConnections" text="Search" AnchorPane.leftAnchor="598.0" AnchorPane.topAnchor="40.0" />
+
                                 <Label layoutX="42.0" layoutY="14.0" text="From:" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="15.0" />
                                 <Label layoutX="248.0" layoutY="14.0" text="To:" AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="15.0" />
                             </children>
@@ -40,7 +42,19 @@
                 </Tab>
                 <Tab text="abfahrtstafel">
                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="14.0" layoutY="14.0" text="From:" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="15.0" />
+                        <TextField layoutX="40.0" layoutY="42.0" prefWidth="250.0" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="40.0" />
+                        <Button layoutX="313.0" layoutY="40.0" mnemonicParsing="false" text="Create Board" AnchorPane.topAnchor="40.0" />
+                        <TableView layoutX="40.0" layoutY="94.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="120.0">
+                          <columns>
+                            <TableColumn prefWidth="128.0" text="From" />
+                            <TableColumn prefWidth="167.0" text="To" />
+                              <TableColumn prefWidth="201.0" text="Departure" />
+                          </columns>
+                        </TableView>
+                     </children></AnchorPane>
                     </content>
                 </Tab>
             </tabs>

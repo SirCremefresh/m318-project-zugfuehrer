@@ -1,0 +1,9 @@
+
+.drop-down, .drop-down .list-cell:empty {
+    -fx-background-color: rgba(250, 250, 250, 0);
+}
+
+.drop-down.list-view .scroll-bar:horizontal {
+    -fx-opacity: 0;
+    -fx-padding:-7;
+}

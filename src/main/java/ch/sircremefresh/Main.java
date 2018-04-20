@@ -17,8 +17,8 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
-		URL url = this.getClass().getResource("main.css");
-		String css = url.toExternalForm();
+		URL cssUrl = this.getClass().getResource("main.css");
+		String css = cssUrl.toExternalForm();
 		root.getStylesheets().add(css);
 		primaryStage.setTitle("m318-project");
 		primaryStage.setScene(new Scene(root, 900, 500));
