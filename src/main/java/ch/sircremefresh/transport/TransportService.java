@@ -88,7 +88,7 @@ public class TransportService {
 		return builder.create();
 	}
 
-	private String urlEncode(final String url) {
+	public String urlEncode(final String url) {
 		try {
 			return URLEncoder.encode(url, "UTF-8");
 		} catch (UnsupportedEncodingException e) {

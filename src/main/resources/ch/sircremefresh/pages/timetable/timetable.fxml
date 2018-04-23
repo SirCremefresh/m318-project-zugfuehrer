@@ -27,8 +27,14 @@
     <AutoCompleteController fx:id="toAutoComplete" layoutX="321.0" layoutY="40.0" prefWidth="250.0"
                             AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="40.0"/>
 
-    <Button layoutX="598.0" layoutY="40.0" mnemonicParsing="false" onAction="#searchConnections" text="Search"
+    <Button mnemonicParsing="false" onAction="#searchConnections" text="Search"
             AnchorPane.leftAnchor="598.0" AnchorPane.topAnchor="40.0"/>
+
+    <Button mnemonicParsing="false" onAction="#showLocation" text="show location"
+            AnchorPane.leftAnchor="598.0" AnchorPane.topAnchor="80.0"/>
+
+    <Button mnemonicParsing="false" onAction="#shareConnections" text="share Connections"
+            AnchorPane.leftAnchor="710.0" AnchorPane.topAnchor="80.0"/>
 
     <Label layoutX="42.0" layoutY="14.0" text="From:" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="15.0"/>
     <Label layoutX="248.0" layoutY="14.0" text="To:" AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="15.0"/>
