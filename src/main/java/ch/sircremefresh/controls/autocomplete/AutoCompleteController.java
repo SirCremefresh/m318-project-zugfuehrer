@@ -2,6 +2,7 @@ package ch.sircremefresh.controls.autocomplete;
 
 import com.sun.javafx.scene.control.skin.BehaviorSkinBase;
 import com.sun.javafx.scene.control.skin.LabeledText;
+import javafx.application.Platform;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,6 +14,7 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.util.Callback;
@@ -65,6 +67,7 @@ public class AutoCompleteController extends AnchorPane {
 
 	@FXML
 	public void initialize() {
+		this.setMaxHeight(27);
 		listView.setCellFactory(cellFactory);
 		listView.setItems(hints);
 
@@ -119,9 +122,13 @@ public class AutoCompleteController extends AnchorPane {
 		});
 
 
-
 		textField.focusedProperty().addListener((arg0, oldPropertyValue, newPropertyValue) -> {
-			listView.visibleProperty().setValue(newPropertyValue || listView.focusedProperty().getValue());
+			listView.visibleProperty().setValue(newPropertyValue);
+			if (newPropertyValue) {
+				this.setMaxHeight(150);
+			} else {
+				this.setMaxHeight(27);
+			}
 		});
 	}
 
@@ -130,14 +137,14 @@ public class AutoCompleteController extends AnchorPane {
 		textField.positionCaret(textField.getLength());
 	}
 
+	public List<String> getHints() {
+		return listView.getItems();
+	}
+
 	public void setHints(List<String> newHints) {
 		hints.clear();
 		hints.addAll(newHints);
 		listView.applyCss();
-	}
-
-	public List<String> getHints() {
-		return listView.getItems();
 	}
 
 	public void setOnEnter(EventHandler<KeyEvent> handler) {
