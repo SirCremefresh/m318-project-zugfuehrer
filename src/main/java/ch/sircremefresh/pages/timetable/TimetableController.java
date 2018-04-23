@@ -1,9 +1,11 @@
 package ch.sircremefresh.pages.timetable;
 
 import ch.sircremefresh.controls.autocomplete.AutoCompleteController;
+import ch.sircremefresh.pages.departureboard.DepartureBoardController;
 import ch.sircremefresh.transport.TransportService;
 import ch.sircremefresh.transport.dto.ConnectionDto;
 import ch.sircremefresh.transport.dto.StationDto;
+import ch.sircremefresh.util.StationSearchAutoComplete;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -47,22 +49,9 @@ public class TimetableController {
 
 	@FXML
 	public void initialize() {
-		initializeAutoComplete(fromAutoComplete);
-		initializeAutoComplete(toAutoComplete);
+		StationSearchAutoComplete.setupAutoComplete(fromAutoComplete, transportService);
+		StationSearchAutoComplete.setupAutoComplete(toAutoComplete, transportService);
 		initializeConnectionTable();
-	}
-
-	private void initializeAutoComplete(AutoCompleteController autoComplete) {
-		autoComplete.getTextProperty().addListener((observable, oldValue, newValue) -> {
-			List<StationDto> stations = transportService.getStations(newValue);
-			List<String> hints = new LinkedList<>();
-			for (int i = 0; i < stations.size(); i++) {
-				if (i > 5)
-					break;
-				hints.add(stations.get(i).getName());
-			}
-			autoComplete.setHints(hints);
-		});
 	}
 
 	private void initializeConnectionTable() {

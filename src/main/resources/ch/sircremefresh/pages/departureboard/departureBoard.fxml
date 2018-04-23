@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import ch.sircremefresh.controls.autocomplete.AutoCompleteController?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            xmlns="http://javafx.com/javafx"
             fx:controller="ch.sircremefresh.pages.departureboard.DepartureBoardController"
             prefHeight="400.0" prefWidth="600.0">
-    <Label layoutX="14.0" layoutY="14.0" text="From:" AnchorPane.leftAnchor="40.0"
-           AnchorPane.topAnchor="15.0"/>
-    <TextField layoutX="40.0" layoutY="42.0" prefWidth="250.0" AnchorPane.leftAnchor="40.0"
-               AnchorPane.topAnchor="40.0"/>
-    <Button layoutX="313.0" layoutY="40.0" mnemonicParsing="false" text="Create Board"
-            AnchorPane.topAnchor="40.0"/>
     <TableView layoutX="40.0" layoutY="94.0" prefHeight="200.0" prefWidth="200.0"
                AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="40.0"
                AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="120.0">
@@ -21,4 +16,14 @@
             <TableColumn prefWidth="201.0" text="Departure"/>
         </columns>
     </TableView>
+
+    <AutoCompleteController fx:id="stationSearchAutoComplete" layoutX="40.0" layoutY="42.0" prefWidth="250.0"
+                            AnchorPane.leftAnchor="40.0"
+                            AnchorPane.topAnchor="40.0"/>
+
+    <Button layoutX="313.0" layoutY="40.0" mnemonicParsing="false" text="Create Board"
+            AnchorPane.topAnchor="40.0"/>
+
+    <Label layoutX="14.0" layoutY="14.0" text="From:" AnchorPane.leftAnchor="40.0"
+           AnchorPane.topAnchor="15.0"/>
 </AnchorPane>
