@@ -78,7 +78,10 @@ public class AutoCompleteController extends AnchorPane {
 				station = ((ListCell) target).getText();
 			} else if (target instanceof LabeledText) {
 				station = ((LabeledText) target).getText();
-			} else {
+			} else if (target instanceof Text) {
+				station = ((Text) target).getText();
+			}
+			else {
 				listView.visibleProperty().setValue(false);
 				return;
 			}
@@ -123,12 +126,22 @@ public class AutoCompleteController extends AnchorPane {
 
 
 		textField.focusedProperty().addListener((arg0, oldPropertyValue, newPropertyValue) -> {
-			listView.visibleProperty().setValue(newPropertyValue);
-			if (newPropertyValue) {
-				this.setMaxHeight(150);
-			} else {
-				this.setMaxHeight(27);
-			}
+			// wait 1000 millis so that when list view is clicked it is getting cached before disappearing
+			new Thread(() -> {
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				Platform.runLater(() -> {
+					listView.visibleProperty().setValue(textField.focusedProperty().getValue());
+					if (textField.focusedProperty().getValue()) {
+						this.setMaxHeight(150);
+					} else {
+						this.setMaxHeight(27);
+					}
+				});
+			}).start();
 		});
 	}
 
