@@ -9,4 +9,5 @@ import lombok.ToString;
 @Setter
 public class StationboardEntryDto {
 	private StopDto stop;
+	private String to;
 }

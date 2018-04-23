@@ -7,7 +7,6 @@
             xmlns="http://javafx.com/javafx"
             fx:controller="ch.sircremefresh.pages.timetable.TimetableController"
             prefHeight="400.0" prefWidth="600.0">
-
     <TableView fx:id="connectionTableView" layoutX="41.0" layoutY="91.0" prefHeight="291.0" prefWidth="799.0"
                AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0"
                AnchorPane.topAnchor="120.0">

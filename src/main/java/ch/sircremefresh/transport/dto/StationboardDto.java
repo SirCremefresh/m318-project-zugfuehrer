@@ -10,6 +10,6 @@ import java.util.List;
 @Getter
 @Setter
 public class StationboardDto {
-	public StationDto station;
-	public List<StationboardEntryDto> stationboard;
+	private StationDto station;
+	private List<StationboardEntryDto> stationboard;
 }

@@ -7,13 +7,13 @@
             xmlns="http://javafx.com/javafx"
             fx:controller="ch.sircremefresh.pages.departureboard.DepartureBoardController"
             prefHeight="400.0" prefWidth="600.0">
-    <TableView layoutX="40.0" layoutY="94.0" prefHeight="200.0" prefWidth="200.0"
+    <TableView fx:id="stationBoardTableView" layoutX="40.0" layoutY="94.0" prefHeight="200.0" prefWidth="200.0"
                AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="40.0"
                AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="120.0">
         <columns>
-            <TableColumn prefWidth="128.0" text="From"/>
-            <TableColumn prefWidth="167.0" text="To"/>
-            <TableColumn prefWidth="201.0" text="Departure"/>
+            <TableColumn prefWidth="128.0" text="From" fx:id="stationBoardTableFromColumn"/>
+            <TableColumn prefWidth="167.0" text="To" fx:id="stationBoardTableToColumn"/>
+            <TableColumn prefWidth="201.0" text="Departure" fx:id="stationBoardTableDepartureColumn"/>
         </columns>
     </TableView>
 

@@ -1,10 +1,8 @@
 package ch.sircremefresh.pages.timetable;
 
 import ch.sircremefresh.controls.autocomplete.AutoCompleteController;
-import ch.sircremefresh.pages.departureboard.DepartureBoardController;
 import ch.sircremefresh.transport.TransportService;
 import ch.sircremefresh.transport.dto.ConnectionDto;
-import ch.sircremefresh.transport.dto.StationDto;
 import ch.sircremefresh.util.StationSearchAutoComplete;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
@@ -14,9 +12,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import lombok.val;
-
-import java.util.LinkedList;
-import java.util.List;
 
 public class TimetableController {
 	private TransportService transportService = new TransportService();
