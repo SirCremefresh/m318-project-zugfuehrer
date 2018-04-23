@@ -3,6 +3,7 @@
 <?import ch.sircremefresh.controls.autocomplete.AutoCompleteController?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import ch.sircremefresh.controls.autocomplete.NumberInputController?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml"
             xmlns="http://javafx.com/javafx"
             fx:controller="ch.sircremefresh.pages.timetable.TimetableController"
@@ -43,7 +44,7 @@
             AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="80.0"
     />
 
-    <TextField
+    <NumberInputController
             fx:id="connectionDateHourTextField"
             prefWidth="40.0"
             AnchorPane.leftAnchor="310.0" AnchorPane.topAnchor="80.0"
@@ -55,7 +56,7 @@
             AnchorPane.leftAnchor="360.0" AnchorPane.topAnchor="80.0"
     />
 
-    <TextField
+    <NumberInputController
             fx:id="connectionDateMinuteTextField"
             prefWidth="40.0"
             AnchorPane.leftAnchor="380.0" AnchorPane.topAnchor="80.0"

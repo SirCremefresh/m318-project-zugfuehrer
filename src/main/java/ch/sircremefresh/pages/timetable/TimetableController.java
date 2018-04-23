@@ -1,6 +1,7 @@
 package ch.sircremefresh.pages.timetable;
 
 import ch.sircremefresh.controls.autocomplete.AutoCompleteController;
+import ch.sircremefresh.controls.autocomplete.NumberInputController;
 import ch.sircremefresh.transport.TransportService;
 import ch.sircremefresh.transport.dto.ConnectionDto;
 import ch.sircremefresh.util.StationSearchAutoComplete;
@@ -9,11 +10,13 @@ import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
-import javafx.scene.control.TextField;
+import javafx.scene.control.Alert;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import lombok.val;
 
-import java.awt.Desktop;
+import java.awt.*;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -37,10 +40,10 @@ public class TimetableController {
 	private DatePicker connectionDateDatePicker;
 
 	@FXML
-	private TextField connectionDateHourTextField;
+	private NumberInputController connectionDateHourTextField;
 
 	@FXML
-	private TextField connectionDateMinuteTextField;
+	private NumberInputController connectionDateMinuteTextField;
 
 	@FXML
 	private TableView<ConnectionDto> connectionTableView;
@@ -71,6 +74,10 @@ public class TimetableController {
 	@FXML
 	private void setupDateTimePicker() {
 		connectionDateDatePicker.setValue(LocalDate.now());
+
+		connectionDateHourTextField.setMaxSize(2);
+		connectionDateMinuteTextField.setMaxSize(2);
+
 		val dateTime = LocalDateTime.now();
 		connectionDateHourTextField.setText(String.valueOf(dateTime.getHour()));
 		connectionDateMinuteTextField.setText(String.valueOf(dateTime.getMinute()));
