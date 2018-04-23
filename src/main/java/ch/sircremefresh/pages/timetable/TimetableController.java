@@ -9,16 +9,18 @@ import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
+import javafx.scene.control.TextField;
 import lombok.val;
 
-import java.awt.*;
+import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class TimetableController {
 	private TransportService transportService = new TransportService();
@@ -30,6 +32,15 @@ public class TimetableController {
 
 	@FXML
 	private AutoCompleteController toAutoComplete;
+
+	@FXML
+	private DatePicker connectionDateDatePicker;
+
+	@FXML
+	private TextField connectionDateHourTextField;
+
+	@FXML
+	private TextField connectionDateMinuteTextField;
 
 	@FXML
 	private TableView<ConnectionDto> connectionTableView;
@@ -53,7 +64,16 @@ public class TimetableController {
 	public void initialize() {
 		StationSearchAutoComplete.setupAutoComplete(fromAutoComplete, transportService);
 		StationSearchAutoComplete.setupAutoComplete(toAutoComplete, transportService);
+		setupDateTimePicker();
 		initializeConnectionTable();
+	}
+
+	@FXML
+	private void setupDateTimePicker() {
+		connectionDateDatePicker.setValue(LocalDate.now());
+		val dateTime = LocalDateTime.now();
+		connectionDateHourTextField.setText(String.valueOf(dateTime.getHour()));
+		connectionDateMinuteTextField.setText(String.valueOf(dateTime.getMinute()));
 	}
 
 	private void initializeConnectionTable() {
@@ -105,9 +125,12 @@ public class TimetableController {
 			showInfoBox("could not find station", "the station: " + toAutoComplete.getText() + " could not be found", Alert.AlertType.WARNING);
 			return;
 		}
+
+		val date = DateTimeFormatter.ofPattern("yyyy-MM-dd").format(connectionDateDatePicker.getValue());
+		val time = connectionDateHourTextField.getText() + ":" + connectionDateMinuteTextField.getText();
 		fromAutoComplete.setText(fromHints.get(0));
 		toAutoComplete.setText(toHints.get(0));
-		val result = transportService.getConnections(fromAutoComplete.getText(), toAutoComplete.getText());
+		val result = transportService.getConnections(fromAutoComplete.getText(), toAutoComplete.getText(), date, time);
 		connections.clear();
 		connections.addAll(result);
 	}
@@ -142,6 +165,9 @@ public class TimetableController {
 					.append(connection.getFrom().getFormattedDepartureTime())
 					.append("%0A");
 		}
+
+		uri.append("%0A%0A%0A%0A%0A%0AGenerated%20by%20the%20best%20Commute%20Application%20Ever");
+
 		try {
 			desktop.mail(new URI(uri.toString()));
 		} catch (IOException | URISyntaxException e) {

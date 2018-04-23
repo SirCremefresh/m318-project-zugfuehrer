@@ -37,10 +37,10 @@ public class TransportService {
 		}
 	}
 
-	public List<ConnectionDto> getConnections(final String from, final String to) {
+	public List<ConnectionDto> getConnections(final String from, final String to, final String date, final String time) {
 		val gson = getGson();
 
-		val response = createGetRequest("http://transport.opendata.ch/v1/connections?from=" + urlEncode(from) + "&to=" + urlEncode(to));
+		val response = createGetRequest("http://transport.opendata.ch/v1/connections?from=" + urlEncode(from) + "&to=" + urlEncode(to) + "&date=" + date + "&time=" + time);
 
 		JSONObject responseObject = response.getEntity(JSONObject.class);
 

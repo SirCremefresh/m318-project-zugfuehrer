@@ -37,6 +37,37 @@
         </columns>
     </TableView>
 
+    <DatePicker
+            fx:id="connectionDateDatePicker"
+            prefWidth="250.0"
+            AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="80.0"
+    />
+
+    <TextField
+            fx:id="connectionDateHourTextField"
+            prefWidth="40.0"
+            AnchorPane.leftAnchor="310.0" AnchorPane.topAnchor="80.0"
+    />
+
+    <Label
+            text="/"
+            style="-fx-font-size: 20"
+            AnchorPane.leftAnchor="360.0" AnchorPane.topAnchor="80.0"
+    />
+
+    <TextField
+            fx:id="connectionDateMinuteTextField"
+            prefWidth="40.0"
+            AnchorPane.leftAnchor="380.0" AnchorPane.topAnchor="80.0"
+    />
+
+    <Button
+            text="now"
+            onAction="#setupDateTimePicker"
+            prefWidth="60.0"
+            AnchorPane.leftAnchor="430.0" AnchorPane.topAnchor="80.0"
+    />
+
     <AutoCompleteController
             fx:id="fromAutoComplete"
             prefWidth="250.0"
