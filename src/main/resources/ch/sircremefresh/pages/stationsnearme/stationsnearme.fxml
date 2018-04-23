@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.*?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            xmlns="http://javafx.com/javafx"
+            fx:controller="ch.sircremefresh.pages.stationsnearme.StationsNearMeController"
+            prefHeight="400.0" prefWidth="600.0"
+>
+    <TableView fx:id="stationNearMeTableView"
+               prefHeight="200.0" prefWidth="200.0"
+               AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="40.0"
+               AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="80.0">
+        <columns>
+            <TableColumn
+                    fx:id="stationNearMeTableNameColumn"
+                    text="Name"
+            />
+            <TableColumn
+                    fx:id="stationNearMeTableDistanceColumn"
+                    text="Distance"
+            />
+        </columns>
+    </TableView>
+
+    <Button
+            onAction="#search"
+            text="search"
+            AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="40.0"
+    />
+</AnchorPane>

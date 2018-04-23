@@ -2,8 +2,10 @@ package ch.sircremefresh.pages.timetable;
 
 import ch.sircremefresh.controls.autocomplete.AutoCompleteController;
 import ch.sircremefresh.controls.autocomplete.NumberInputController;
+import ch.sircremefresh.location.LocationService;
 import ch.sircremefresh.transport.TransportService;
 import ch.sircremefresh.transport.dto.ConnectionDto;
+import ch.sircremefresh.util.InfoBox;
 import ch.sircremefresh.util.StationSearchAutoComplete;
 import ch.sircremefresh.util.TimeFormatter;
 import javafx.beans.binding.Bindings;
@@ -27,6 +29,7 @@ import java.time.format.DateTimeFormatter;
 
 public class TimetableController {
 	private TransportService transportService = new TransportService();
+	private LocationService locationService = new LocationService();
 
 	private ObservableList<ConnectionDto> connections = FXCollections.observableArrayList();
 
@@ -65,6 +68,12 @@ public class TimetableController {
 
 	@FXML
 	public void initialize() {
+		try {
+			val location = locationService.getLocation();
+			System.out.println(location.getCity());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		StationSearchAutoComplete.setupAutoComplete(fromAutoComplete, transportService);
 		StationSearchAutoComplete.setupAutoComplete(toAutoComplete, transportService);
 		setupDateTimePicker();
@@ -105,11 +114,11 @@ public class TimetableController {
 	@FXML
 	public void showLocation() {
 		if (toAutoComplete.getText().isEmpty()) {
-			showInfoBox("Text field is empty", "you need to type in the station name", Alert.AlertType.INFORMATION);
+			InfoBox.show("Text field is empty", "you need to type in the station name", Alert.AlertType.INFORMATION);
 		}
 		val stations = transportService.getStations(toAutoComplete.getText());
 		if (stations.size() == 0) {
-			showInfoBox("no station found", "no station matched to '" + toAutoComplete.getText() + "'", Alert.AlertType.ERROR);
+			InfoBox.show("no station found", "no station matched to '" + toAutoComplete.getText() + "'", Alert.AlertType.ERROR);
 		}
 		val station = stations.get(0);
 		try {
@@ -122,21 +131,21 @@ public class TimetableController {
 	@FXML
 	public void searchConnections() {
 		if (fromAutoComplete.getText().isEmpty()) {
-			showInfoBox("from station is empty", "the from station input can't be left empty", Alert.AlertType.WARNING);
+			InfoBox.show("from station is empty", "the from station input can't be left empty", Alert.AlertType.WARNING);
 			return;
 		}
 		if (toAutoComplete.getText().isEmpty()) {
-			showInfoBox("to station is empty", "the to station input can't be left empty", Alert.AlertType.WARNING);
+			InfoBox.show("to station is empty", "the to station input can't be left empty", Alert.AlertType.WARNING);
 			return;
 		}
 		val fromHints = fromAutoComplete.getHints();
 		val toHints = toAutoComplete.getHints();
 		if (fromHints.size() == 0) {
-			showInfoBox("could not find station", "the station: " + fromAutoComplete.getText() + " could not be found", Alert.AlertType.WARNING);
+			InfoBox.show("could not find station", "the station: " + fromAutoComplete.getText() + " could not be found", Alert.AlertType.WARNING);
 			return;
 		}
 		if (toHints.size() == 0) {
-			showInfoBox("could not find station", "the station: " + toAutoComplete.getText() + " could not be found", Alert.AlertType.WARNING);
+			InfoBox.show("could not find station", "the station: " + toAutoComplete.getText() + " could not be found", Alert.AlertType.WARNING);
 			return;
 		}
 
@@ -187,13 +196,5 @@ public class TimetableController {
 		} catch (IOException | URISyntaxException e) {
 			e.printStackTrace();
 		}
-	}
-
-	private void showInfoBox(String title, String msg, Alert.AlertType alertType) {
-		Alert alert = new Alert(alertType);
-		alert.setTitle(title);
-		alert.setHeaderText(null);
-		alert.setContentText(msg);
-		alert.showAndWait();
 	}
 }

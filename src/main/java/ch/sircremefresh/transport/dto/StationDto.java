@@ -11,4 +11,5 @@ public class StationDto {
 	private String id;
 	private String name;
 	private CoordinateDto coordinate;
+	private String distance;
 }

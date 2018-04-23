@@ -6,13 +6,17 @@
             prefWidth="900.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="ch.sircremefresh.Controller">
     <TabPane layoutX="32.0" prefHeight="500.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE"
-             AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-             AnchorPane.topAnchor="0.0">
+             AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+             AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"
+    >
         <Tab text="fahrplan">
             <fx:include fx:id="timetable" source="pages/timetable/timetable.fxml"/>
         </Tab>
         <Tab text="abfahrtstafel">
             <fx:include fx:id="departureBoard" source="pages/departureboard/departureBoard.fxml"/>
+        </Tab>
+        <Tab text="Stationen in der nähe">
+            <fx:include fx:id="stationsNearMe" source="pages/stationsnearme/stationsnearme.fxml"/>
         </Tab>
     </TabPane>
 </AnchorPane>

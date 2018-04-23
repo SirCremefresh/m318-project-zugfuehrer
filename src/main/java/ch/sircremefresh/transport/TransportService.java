@@ -27,6 +27,20 @@ public class TransportService {
 
 		JSONObject responseObject = response.getEntity(JSONObject.class);
 
+		return ParseResponseToStationDtoList(gson, responseObject);
+	}
+
+	public List<StationDto> getStationsNear(final String x, final String y) {
+		val gson = getGson();
+
+		val response = createGetRequest("http://transport.opendata.ch/v1/locations?x=" + x + "&y=" + y);
+
+		JSONObject responseObject = response.getEntity(JSONObject.class);
+
+		return ParseResponseToStationDtoList(gson, responseObject);
+	}
+
+	private List<StationDto> ParseResponseToStationDtoList(Gson gson, JSONObject responseObject) {
 		try {
 			Type StationDtoListType = new TypeToken<List<StationDto>>() {
 			}.getType();

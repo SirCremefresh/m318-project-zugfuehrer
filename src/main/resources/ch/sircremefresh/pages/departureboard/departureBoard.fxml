@@ -7,23 +7,42 @@
             xmlns="http://javafx.com/javafx"
             fx:controller="ch.sircremefresh.pages.departureboard.DepartureBoardController"
             prefHeight="400.0" prefWidth="600.0">
-    <TableView fx:id="stationBoardTableView" layoutX="40.0" layoutY="94.0" prefHeight="200.0" prefWidth="200.0"
-               AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="40.0"
-               AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="120.0">
+    <TableView
+            fx:id="stationBoardTableView"
+            prefHeight="200.0" prefWidth="200.0"
+            AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="40.0"
+            AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="120.0"
+    >
         <columns>
-            <TableColumn prefWidth="128.0" text="From" fx:id="stationBoardTableFromColumn"/>
-            <TableColumn prefWidth="167.0" text="To" fx:id="stationBoardTableToColumn"/>
-            <TableColumn prefWidth="201.0" text="Departure" fx:id="stationBoardTableDepartureColumn"/>
+            <TableColumn
+                    fx:id="stationBoardTableFromColumn"
+                    text="From"
+            />
+            <TableColumn
+                    fx:id="stationBoardTableToColumn"
+                    text="To"
+            />
+            <TableColumn
+                    text="Departure"
+                    fx:id="stationBoardTableDepartureColumn"
+            />
         </columns>
     </TableView>
 
-    <AutoCompleteController fx:id="stationSearchAutoComplete" layoutX="40.0" layoutY="42.0" prefWidth="250.0"
-                            AnchorPane.leftAnchor="40.0"
-                            AnchorPane.topAnchor="40.0"/>
+    <AutoCompleteController
+            fx:id="stationSearchAutoComplete"
+            prefWidth="250.0"
+            AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="40.0"
+    />
 
-    <Button onAction="#showStationBoard" layoutX="313.0" layoutY="40.0" mnemonicParsing="false" text="Create Board"
-            AnchorPane.topAnchor="40.0"/>
+    <Button
+            onAction="#showStationBoard"
+            text="Create Board" mnemonicParsing="false"
+            AnchorPane.topAnchor="40.0" AnchorPane.leftAnchor="320"
+    />
 
-    <Label layoutX="14.0" layoutY="14.0" text="From:" AnchorPane.leftAnchor="40.0"
-           AnchorPane.topAnchor="15.0"/>
+    <Label
+            text="From:"
+            AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="15.0"
+    />
 </AnchorPane>
