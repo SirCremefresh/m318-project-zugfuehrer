@@ -50,7 +50,7 @@ public class AutoCompleteController extends AnchorPane {
 	public AutoCompleteController() {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(
 				"autocomplete.fxml"));
-		URL cssUrl = this.getClass().getResource("main.css");
+		URL cssUrl = this.getClass().getResource("autocomplete.css");
 		String css = cssUrl.toExternalForm();
 		this.getStylesheets().add(css);
 		fxmlLoader.setRoot(this);
@@ -134,6 +134,10 @@ public class AutoCompleteController extends AnchorPane {
 		hints.clear();
 		hints.addAll(newHints);
 		listView.applyCss();
+	}
+
+	public List<String> getHints() {
+		return listView.getItems();
 	}
 
 	public void setOnEnter(EventHandler<KeyEvent> handler) {
