@@ -54,17 +54,14 @@ public class TransportService {
 		}
 	}
 
-	public List<StationDto> getStationboard(String station) {
+	public StationboardDto getStationboard(String station) {
 		val gson = getGson();
 
-		val response = createGetRequest("http://transport.opendata.ch/v1/stationboard?Station=" + urlEncode(station));
+		val response = createGetRequest("http://transport.opendata.ch/v1/stationboard?station=" + urlEncode(station));
 
 		val responseString = response.getEntity(String.class);
 
-
-		Type stationboardDtoListType = new TypeToken<List<StationboardDto>>() {
-		}.getType();
-		return gson.fromJson(responseString, stationboardDtoListType);
+		return gson.fromJson(responseString, StationboardDto.class);
 	}
 
 	private ClientResponse createGetRequest(final String url) {

@@ -21,7 +21,7 @@
                             AnchorPane.leftAnchor="40.0"
                             AnchorPane.topAnchor="40.0"/>
 
-    <Button layoutX="313.0" layoutY="40.0" mnemonicParsing="false" text="Create Board"
+    <Button onAction="#showStationBoard" layoutX="313.0" layoutY="40.0" mnemonicParsing="false" text="Create Board"
             AnchorPane.topAnchor="40.0"/>
 
     <Label layoutX="14.0" layoutY="14.0" text="From:" AnchorPane.leftAnchor="40.0"

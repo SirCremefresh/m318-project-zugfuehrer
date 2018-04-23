@@ -11,5 +11,5 @@ import java.util.List;
 @Setter
 public class StationboardDto {
 	public StationDto station;
-	public List<StationboardEntryDto> entries;
+	public List<StationboardEntryDto> stationboard;
 }
