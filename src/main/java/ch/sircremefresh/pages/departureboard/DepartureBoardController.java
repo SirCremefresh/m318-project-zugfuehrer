@@ -49,6 +49,11 @@ public class DepartureBoardController {
 
 	private void initializeStationBoardTable() {
 		stationBoardTableView.setItems(stationboardEntries);
+
+		stationBoardTableFromColumn.prefWidthProperty().bind(stationBoardTableView.widthProperty().divide(3));
+		stationBoardTableToColumn.prefWidthProperty().bind(stationBoardTableView.widthProperty().divide(3));
+		stationBoardTableDepartureColumn.prefWidthProperty().bind(stationBoardTableView.widthProperty().divide(3));
+
 		stationBoardTableFromColumn.setCellValueFactory(cd -> Bindings.createStringBinding(() -> cd.getValue().getStop().getStation().getName()));
 		stationBoardTableToColumn.setCellValueFactory(cd -> Bindings.createStringBinding(() -> cd.getValue().getTo()));
 		stationBoardTableDepartureColumn.setCellValueFactory(cd -> Bindings.createStringBinding(() -> cd.getValue().getStop().getDeparture()));

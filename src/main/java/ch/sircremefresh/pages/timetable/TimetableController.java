@@ -78,6 +78,13 @@ public class TimetableController {
 
 	private void initializeConnectionTable() {
 		connectionTableView.setItems(connections);
+
+		connectionTableFromColumn.prefWidthProperty().bind(connectionTableView.widthProperty().divide(5));
+		connectionTableToColumn.prefWidthProperty().bind(connectionTableView.widthProperty().divide(5));
+		connectionTableDepartureTimeColumn.prefWidthProperty().bind(connectionTableView.widthProperty().divide(5));
+		connectionTableArrivalTimeColumn.prefWidthProperty().bind(connectionTableView.widthProperty().divide(5));
+		connectionTableDurationColumn.prefWidthProperty().bind(connectionTableView.widthProperty().divide(5));
+
 		connectionTableFromColumn.setCellValueFactory(cd -> Bindings.createStringBinding(() -> cd.getValue().getFrom().getStation().getName()));
 		connectionTableToColumn.setCellValueFactory(cd -> Bindings.createStringBinding(() -> cd.getValue().getTo().getStation().getName()));
 		connectionTableDepartureTimeColumn.setCellValueFactory(cd -> Bindings.createStringBinding(() -> cd.getValue().getFrom().getFormattedDepartureTime()));
