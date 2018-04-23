@@ -19,25 +19,4 @@ public class ConnectionPointDto {
 	private int delay;
 	private String platform;
 	private String realtimeAvailability;
-
-	public String getFormattedDepartureTime() {
-		LocalDateTime localDateTime = parserLocalDateTimeFromString(departure);
-		return getFormattedTime(localDateTime);
-	}
-
-	public String getFormattedArrivalTime() {
-		LocalDateTime localDateTime = parserLocalDateTimeFromString(arrival);
-		return getFormattedTime(localDateTime);
-	}
-
-	private LocalDateTime parserLocalDateTimeFromString(String string) {
-		return LocalDateTime.parse(
-				string.replace("T", " "),
-				DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ssZ")
-		);
-	}
-
-	private String getFormattedTime(LocalDateTime localDateTime) {
-		return localDateTime.getHour() + ":" + (localDateTime.getMinute() < 10? "0": "") + localDateTime.getMinute() ;
-	}
 }

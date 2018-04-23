@@ -94,8 +94,8 @@ public class TimetableController {
 
 		connectionTableFromColumn.setCellValueFactory(cd -> Bindings.createStringBinding(() -> cd.getValue().getFrom().getStation().getName()));
 		connectionTableToColumn.setCellValueFactory(cd -> Bindings.createStringBinding(() -> cd.getValue().getTo().getStation().getName()));
-		connectionTableDepartureTimeColumn.setCellValueFactory(cd -> Bindings.createStringBinding(() -> cd.getValue().getFrom().getFormattedDepartureTime()));
-		connectionTableArrivalTimeColumn.setCellValueFactory(cd -> Bindings.createStringBinding(() -> cd.getValue().getTo().getFormattedArrivalTime()));
+		connectionTableDepartureTimeColumn.setCellValueFactory(cd -> Bindings.createStringBinding(() -> TimeFormatter.getFormattedTime(cd.getValue().getFrom().getDeparture())));
+		connectionTableArrivalTimeColumn.setCellValueFactory(cd -> Bindings.createStringBinding(() -> TimeFormatter.getFormattedTime(cd.getValue().getTo().getArrival())));
 		connectionTableDurationColumn.setCellValueFactory(cd -> Bindings.createStringBinding(() -> {
 			String duration = cd.getValue().getDuration();
 			return TimeFormatter.getFormattedDuration(duration);
@@ -176,7 +176,7 @@ public class TimetableController {
 							).replace(" ", "%20")
 					)
 					.append("%20Departure:%20")
-					.append(connection.getFrom().getFormattedDepartureTime())
+					.append(TimeFormatter.getFormattedTime(connection.getFrom().getDeparture()))
 					.append("%0A");
 		}
 
