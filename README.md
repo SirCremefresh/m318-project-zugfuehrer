@@ -184,6 +184,20 @@ minuten jeh nur 2 zahlen lang sind.
 <a name="activity"/>
 
 ## 3.6 Aktivitätendiagramm
+Die Aktivitätsdiagramme für die ersten 3 Anforderungen.
+
+### 3.6.1 A001
+![activity-A001](/img/activity-A001.png)
+
+### 3.6.1 A002
+![activity-A002](/img/activity-A003.png)
+
+### 3.6.1 A003
+![activity-A003](/img/activity-A003.png)
+
+
+
+
 
 <a name="implementation"/>
 
