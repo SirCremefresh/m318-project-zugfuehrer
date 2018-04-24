@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import ch.sircremefresh.controls.actionButton.ActionButtonController?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.*?>
-<?import ch.sircremefresh.controls.actionButton.ActionButtonController?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml"
             xmlns="http://javafx.com/javafx"
             fx:controller="ch.sircremefresh.pages.stationsnearme.StationsNearMeController"

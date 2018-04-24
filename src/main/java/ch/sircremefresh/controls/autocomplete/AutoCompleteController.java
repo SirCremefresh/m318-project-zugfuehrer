@@ -14,7 +14,6 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.util.Callback;
@@ -80,8 +79,7 @@ public class AutoCompleteController extends AnchorPane {
 				station = ((LabeledText) target).getText();
 			} else if (target instanceof Text) {
 				station = ((Text) target).getText();
-			}
-			else {
+			} else {
 				listView.visibleProperty().setValue(false);
 				return;
 			}
@@ -178,5 +176,9 @@ public class AutoCompleteController extends AnchorPane {
 
 	public StringProperty getTextProperty() {
 		return textField.textProperty();
+	}
+
+	public TextField getTextField() {
+		return textField;
 	}
 }

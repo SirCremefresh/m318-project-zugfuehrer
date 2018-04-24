@@ -1,17 +1,21 @@
 package ch.sircremefresh.pages.departureboard;
 
 import ch.sircremefresh.controls.autocomplete.AutoCompleteController;
+import ch.sircremefresh.transport.TransportApiException;
 import ch.sircremefresh.transport.TransportService;
+import ch.sircremefresh.transport.dto.StationboardDto;
 import ch.sircremefresh.transport.dto.StationboardEntryDto;
+import ch.sircremefresh.util.InfoBox;
 import ch.sircremefresh.util.StationSearchAutoComplete;
 import ch.sircremefresh.util.TimeFormatter;
+import com.sun.javafx.scene.control.skin.BehaviorSkinBase;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import lombok.val;
 
 public class DepartureBoardController {
 	private TransportService transportService = new TransportService();
@@ -42,12 +46,26 @@ public class DepartureBoardController {
 
 	@FXML
 	public void showStationBoard() {
-		val stationBoard = transportService.getStationboard(stationSearchAutoComplete.getText());
+		StationboardDto stationBoard;
+		try {
+			stationBoard = transportService.getStationboard(stationSearchAutoComplete.getText());
+
+		} catch (TransportApiException e) {
+			InfoBox.show("error while getting station board", e.getMessage(), Alert.AlertType.ERROR);
+			return;
+		} catch (Throwable e) {
+			InfoBox.show("something went wrong", "while getting stationboard", Alert.AlertType.ERROR);
+			return;
+		}
 		stationboardEntries.clear();
 		stationboardEntries.addAll(stationBoard.getStationboard());
 	}
 
 	private void initializeStationBoardTable() {
+		stationBoardTableView.focusedProperty().addListener((arg0, oldVal, newVal) -> {
+			((BehaviorSkinBase) stationBoardTableView.getSkin()).getBehavior().traverseNext();
+		});
+
 		stationBoardTableView.setItems(stationboardEntries);
 
 		stationBoardTableFromColumn.prefWidthProperty().bind(stationBoardTableView.widthProperty().divide(3));

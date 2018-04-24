@@ -24,7 +24,7 @@ public class TimeFormatter {
 	}
 
 	private static String getFormattedTime(LocalDateTime localDateTime) {
-		return localDateTime.getHour() + ":" + (localDateTime.getMinute() < 10? "0": "") + localDateTime.getMinute() ;
+		return localDateTime.getHour() + ":" + (localDateTime.getMinute() < 10 ? "0" : "") + localDateTime.getMinute();
 	}
 
 	public static LocalDateTime parserLocalDateTimeFromString(String string) {

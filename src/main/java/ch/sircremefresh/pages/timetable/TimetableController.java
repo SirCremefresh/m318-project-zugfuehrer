@@ -3,11 +3,14 @@ package ch.sircremefresh.pages.timetable;
 import ch.sircremefresh.controls.autocomplete.AutoCompleteController;
 import ch.sircremefresh.controls.numberinput.NumberInputController;
 import ch.sircremefresh.location.LocationService;
+import ch.sircremefresh.transport.TransportApiException;
 import ch.sircremefresh.transport.TransportService;
 import ch.sircremefresh.transport.dto.ConnectionDto;
+import ch.sircremefresh.transport.dto.StationDto;
 import ch.sircremefresh.util.InfoBox;
 import ch.sircremefresh.util.StationSearchAutoComplete;
 import ch.sircremefresh.util.TimeFormatter;
+import com.sun.javafx.scene.control.skin.BehaviorSkinBase;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -26,6 +29,7 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 public class TimetableController {
 	private TransportService transportService = new TransportService();
@@ -78,7 +82,7 @@ public class TimetableController {
 		StationSearchAutoComplete.setupAutoComplete(toAutoComplete, transportService);
 		setupDateTimePicker();
 		initializeConnectionTable();
-		fromAutoComplete.requestFocus();
+		fromAutoComplete.getTextField().requestFocus();
 	}
 
 	@FXML
@@ -94,6 +98,11 @@ public class TimetableController {
 	}
 
 	private void initializeConnectionTable() {
+		connectionTableView.focusedProperty().addListener((arg0, oldVal, newVal) -> {
+			((BehaviorSkinBase) connectionTableView.getSkin()).getBehavior().traverseNext();
+		});
+
+
 		connectionTableView.setItems(connections);
 
 		connectionTableFromColumn.prefWidthProperty().bind(connectionTableView.widthProperty().divide(5));
@@ -117,7 +126,17 @@ public class TimetableController {
 		if (toAutoComplete.getText().isEmpty()) {
 			InfoBox.show("Text field is empty", "you need to type in the station name", Alert.AlertType.INFORMATION);
 		}
-		val stations = transportService.getStations(toAutoComplete.getText());
+		List<StationDto> stations;
+		try {
+			stations = transportService.getStations(toAutoComplete.getText());
+		} catch (TransportApiException e) {
+			InfoBox.show("error while getting station", e.getMessage(), Alert.AlertType.ERROR);
+			return;
+		} catch (Exception e) {
+			InfoBox.show("something went wrong", "while getting station", Alert.AlertType.ERROR);
+			return;
+		}
+
 		if (stations.size() == 0) {
 			InfoBox.show("no station found", "no station matched to '" + toAutoComplete.getText() + "'", Alert.AlertType.ERROR);
 		}
@@ -154,9 +173,20 @@ public class TimetableController {
 		val time = connectionDateHourTextField.getText() + ":" + connectionDateMinuteTextField.getText();
 		fromAutoComplete.setText(fromHints.get(0));
 		toAutoComplete.setText(toHints.get(0));
-		val result = transportService.getConnections(fromAutoComplete.getText(), toAutoComplete.getText(), date, time);
+
+		List<ConnectionDto> newConnections;
+		try {
+			newConnections = transportService.getConnections(fromAutoComplete.getText(), toAutoComplete.getText(), date, time);
+		} catch (TransportApiException e) {
+			InfoBox.show("error while getting connections", e.getMessage(), Alert.AlertType.ERROR);
+			return;
+		} catch (Exception e) {
+			InfoBox.show("something went wrong", "while getting connections", Alert.AlertType.ERROR);
+			return;
+		}
+
 		connections.clear();
-		connections.addAll(result);
+		connections.addAll(newConnections);
 	}
 
 	@FXML

@@ -2,9 +2,11 @@ package ch.sircremefresh.pages.stationsnearme;
 
 import ch.sircremefresh.location.LocationService;
 import ch.sircremefresh.location.dto.LocationDto;
+import ch.sircremefresh.transport.TransportApiException;
 import ch.sircremefresh.transport.TransportService;
 import ch.sircremefresh.transport.dto.StationDto;
 import ch.sircremefresh.util.InfoBox;
+import com.sun.javafx.scene.control.skin.BehaviorSkinBase;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -32,6 +34,10 @@ public class StationsNearMeController {
 
 	@FXML
 	public void initialize() {
+		stationNearMeTableView.focusedProperty().addListener((arg0, oldVal, newVal) -> {
+			((BehaviorSkinBase) stationNearMeTableView.getSkin()).getBehavior().traverseNext();
+		});
+
 		stationNearMeTableView.setItems(stationsNearMe);
 
 		stationNearMeTableNameColumn.prefWidthProperty().bind(stationNearMeTableView.widthProperty().divide(2));
@@ -54,6 +60,9 @@ public class StationsNearMeController {
 		List<StationDto> stations;
 		try {
 			stations = transportService.getStationsNear(location.getLongitude(), location.getLatitude());
+		} catch (TransportApiException e) {
+			InfoBox.show("error while getting station board", e.getMessage(), Alert.AlertType.ERROR);
+			return;
 		} catch (Exception e) {
 			InfoBox.show("something went wrong", "while getting stations near you", Alert.AlertType.ERROR);
 			return;
