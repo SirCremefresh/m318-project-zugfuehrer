@@ -101,7 +101,19 @@ Dah weitere funktionen und seiten hinzugekommen sind.
 
 ### 3.2.1 Verbindung's plan
 
+Auf dieser seite kann man einen abfahrt's ort und eine ankunft's ort eingeben.
+Es werden vorschläge von orten unterhalb der text-feldern angezeigt.
+In der Liste werden dan die nächsten verbindungen angezeigt.
+
 ![Timetable-mockup](/img/Timetable-mockup.png)
+
+### 3.2.2 Abfahrt's tafel
+
+Man kann die gewünschte Station eingeben. 
+Es werden vorschläge von orten unterhalb der text-feldern angezeigt.
+In der Liste werden dan die nächsten verbindungen von dieser station aus angezeigt.
+
+![DepartureBoard-mockup](/img/DepartureBoard-mockup.png)
 
 
 <a name="validation"/>
