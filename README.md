@@ -131,7 +131,7 @@ minuten jeh nur 2 zahlen lang sind.
 
 ## 3.4 Testfälle
 ### 3.4.1 Station suchen
-**Beschreibung:** Nach verbindungen zwischen zwei station suchen
+**Beschreibung:** Nach verbindungen zwischen zwei station suchen und Standort öffnen und mail versenden
 
 **Anforderung:** A001 & A002 & A004 & A005 & A006 & A008
 
@@ -144,7 +144,7 @@ minuten jeh nur 2 zahlen lang sind.
 | 3       | Ich klicke auf den button "show location" | es öffnet sich ein web browser bei dem ein marker beim Zürich HB ist |
 | 4       | Ich gebe im feld "Hour" "15" ein | es verändert sich sonst nichts |
 | 5       | Ich klicke auf den button "search" | Es werden nun 4 verbindungen in der liste angezeigt. Alle verbindungen haben eine ankunft's zeit nach 15 uhr |
-| 6       | Ich klicke auf den button "share Connections" | Es wird nun ein mail programm geöffnet wo man die gleichen verbindungen wie vorher in der liste jetzt in der nachricht stehen |
+| 6       | Ich klicke auf den button "share Connections" | Es wird nun ein mail programm geöffnet wo man die gleichen verbindungen wie vorher in der liste angezeigt wurden jetzt in der nachricht stehen |
 
 
 <a name="usecase"/>
