@@ -195,7 +195,7 @@ Die Aktivitätsdiagramme für die ersten 3 Anforderungen A001 & A002 & A003.
 ![activity-A001](/img/activity-A001.png)
 
 ### 3.6.1 A002
-![activity-A002](/img/activity-A003.png)
+![activity-A002](/img/activity-A002.png)
 
 ### 3.6.1 A003
 ![activity-A003](/img/activity-A003.png)
