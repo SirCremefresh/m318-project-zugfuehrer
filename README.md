@@ -241,6 +241,7 @@ Die Aktivitätsdiagramme für die ersten 3 Anforderungen A001 & A002 & A003.
 |  002   | Die resultate vom Autocomplete werden synchron geladen daher ist dass tippen sehr langsam.                     |
 |  003   | Der Standort wird über die öffentliche Ip-Adresse ermittelt, daher ist er sehr ungenau.                       |
 |  004   | Wen Eine Strasse gesucht wird bekommt man einfach keine resultate                       |
+|  005   | Es sind nicht alle tabstops richtig da javafx kein tabindex unterstützt                      |
 
 
 
