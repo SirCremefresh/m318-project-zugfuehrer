@@ -160,7 +160,9 @@ minuten jeh nur 2 zahlen lang sind.
 
 
 ### 4.1.1 zusätzliche Funktionen
-**Zeit Zurückstellen** Mann hat einen knopf wo man die zeit auf die aktuelle zeit zurück stellen kann.
+| Anforderung | Priorität | Status | Beschreibung                                                                                                                                                                                                                                                       |
+| ----------- | --------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | 
+| Z01         | -         | ✔      | Mann hat einen knopf auf der Verbindung's plan Seite wo man die zeit auf die aktuelle zeit zurück stellen kann.                                                                                                                        | 
 
 
 <a name="bugs"/>
