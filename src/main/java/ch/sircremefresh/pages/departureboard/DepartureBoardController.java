@@ -2,9 +2,9 @@ package ch.sircremefresh.pages.departureboard;
 
 import ch.sircremefresh.controls.autocomplete.AutoCompleteController;
 import ch.sircremefresh.transport.TransportService;
-import ch.sircremefresh.transport.dto.ConnectionDto;
 import ch.sircremefresh.transport.dto.StationboardEntryDto;
 import ch.sircremefresh.util.StationSearchAutoComplete;
+import ch.sircremefresh.util.TimeFormatter;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -56,6 +56,6 @@ public class DepartureBoardController {
 
 		stationBoardTableFromColumn.setCellValueFactory(cd -> Bindings.createStringBinding(() -> cd.getValue().getStop().getStation().getName()));
 		stationBoardTableToColumn.setCellValueFactory(cd -> Bindings.createStringBinding(() -> cd.getValue().getTo()));
-		stationBoardTableDepartureColumn.setCellValueFactory(cd -> Bindings.createStringBinding(() -> cd.getValue().getStop().getDeparture()));
+		stationBoardTableDepartureColumn.setCellValueFactory(cd -> Bindings.createStringBinding(() -> TimeFormatter.getFormattedTime(cd.getValue().getStop().getDeparture())));
 	}
 }
