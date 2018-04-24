@@ -3,20 +3,18 @@ package ch.sircremefresh.location;
 import ch.sircremefresh.location.dto.LocationDto;
 import ch.sircremefresh.util.IpGetter;
 import com.maxmind.geoip2.DatabaseReader;
-import com.maxmind.geoip2.exception.GeoIp2Exception;
 import com.maxmind.geoip2.model.CityResponse;
 
-import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.InetAddress;
 
 public class LocationService {
 	private DatabaseReader dbReader;
 
 	public LocationService() {
-		File database = new File(getClass().getResource("GeoLite2-City.mmdb").getFile());
 		try {
-			dbReader = new DatabaseReader.Builder(database).build();
+			dbReader = new DatabaseReader.Builder((InputStream) getClass().getResource("GeoLite2-City.mmdb").getContent()).build();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

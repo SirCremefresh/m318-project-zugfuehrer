@@ -25,7 +25,13 @@ public class TransportService {
 
 		val response = createGetRequest("http://transport.opendata.ch/v1/locations?query=" + urlEncode(searchQuery));
 
-		JSONObject responseObject = response.getEntity(JSONObject.class);
+
+		JSONObject responseObject = null;
+		try {
+			responseObject = new JSONObject(response.getEntity(String.class));
+		} catch (JSONException e) {
+			throw new TransportApiException("An error occurred when parsing server response", e);
+		}
 
 		return ParseResponseToStationDtoList(gson, responseObject);
 	}
@@ -35,7 +41,12 @@ public class TransportService {
 
 		val response = createGetRequest("http://transport.opendata.ch/v1/locations?x=" + x + "&y=" + y);
 
-		JSONObject responseObject = response.getEntity(JSONObject.class);
+		JSONObject responseObject = null;
+		try {
+			responseObject = new JSONObject(response.getEntity(String.class));
+		} catch (JSONException e) {
+			throw new TransportApiException("An error occurred when parsing server response", e);
+		}
 
 		return ParseResponseToStationDtoList(gson, responseObject);
 	}
@@ -56,7 +67,12 @@ public class TransportService {
 
 		val response = createGetRequest("http://transport.opendata.ch/v1/connections?from=" + urlEncode(from) + "&to=" + urlEncode(to) + "&date=" + date + "&time=" + time);
 
-		JSONObject responseObject = response.getEntity(JSONObject.class);
+		JSONObject responseObject = null;
+		try {
+			responseObject = new JSONObject(response.getEntity(String.class));
+		} catch (JSONException e) {
+			throw new TransportApiException("An error occurred when parsing server response", e);
+		}
 
 		try {
 			Type connectionDtoListType = new TypeToken<List<ConnectionDto>>() {
