@@ -180,11 +180,16 @@ minuten jeh nur 2 zahlen lang sind.
 <a name="usecase"/>
 
 ## 3.5 Use Case
+Ein Usecasediagramm für die ersten 3 Anforderungen A001 & A002 & A003.
+
+
+![activity-A001](/img/usecase-A001&A002&A003.png)
+
 
 <a name="activity"/>
 
 ## 3.6 Aktivitätendiagramm
-Die Aktivitätsdiagramme für die ersten 3 Anforderungen.
+Die Aktivitätsdiagramme für die ersten 3 Anforderungen A001 & A002 & A003.
 
 ### 3.6.1 A001
 ![activity-A001](/img/activity-A001.png)
