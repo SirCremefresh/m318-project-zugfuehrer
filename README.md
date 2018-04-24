@@ -1,5 +1,8 @@
 # m318-project-zugfuehrer
+<a name="tableofcontents"/>
+
 ## 1 Inhaltsverzeichnis
+* [1 Inhaltsverzeichnis](#tableofcontents) 
 * [2 Projekt Informationen](#information) 
 * [3 Konzeptionierung](#concept)  
   * [3.1 Coderichtlinie](#code) 
@@ -11,7 +14,6 @@
 * [4 Umsetzung](#implementation)  
   * [4.1 Funktionen](#features)  
   * [4.2 Bugs und Fehler](#bugs)  
-  * [4.3 Screenshot](#screenshot) 
 * [5 Installation](#install)  
 * [6 Deinstallation](#deinstall)  
 
