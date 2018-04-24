@@ -246,12 +246,16 @@ Die Aktivitätsdiagramme für die ersten 3 Anforderungen A001 & A002 & A003.
 
 # 6 Installation
 
-Man kann einfach auf das gegebene .jar file doppelklicken. die Anwendung wird dann sogleich gestartet.
+Man kann die Installations Datei von **URL** herunterladen.
+Dann muss man sie auf den Desktop kopieren.
+Dort Kann mann das Programm einfach starten.
+Wenn kein Java mit genügender version gefunden wird wird die Java Installieren Website geöffnet.
+Man darf diese Datei **Nicht** Verschieben und **Nicht** Umbenennen.
 
 <a name="deinstall"/>
 
 # 6 Deinstallation
 
-Einfach das .jar file in den Papierkorb ziehen. 
-Es werden keine daten im hintergrund abgelegt.
+Man kann die Deinstallation's Datei von **URL** herunterladen.
+Diese Kann man dan einfach ausführen.
 
