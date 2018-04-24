@@ -240,6 +240,7 @@ Die Aktivitätsdiagramme für die ersten 3 Anforderungen A001 & A002 & A003.
 |  001   | Es kann vorkommen dass wen man mit der maus zu schnell auf ein autocomplete klickt dass es selektiert wird.    |
 |  002   | Die resultate vom Autocomplete werden synchron geladen daher ist dass tippen sehr langsam.                     |
 |  003   | Der Standort wird über die öffentliche Ip-Adresse ermittelt, daher ist er sehr ungenau.                       |
+|  004   | Wen Eine Strasse gesucht wird bekommt man einfach keine resultate                       |
 
 
 
