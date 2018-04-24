@@ -96,8 +96,14 @@ Es wird grundsätzlich nichts kommentiert außer wenn es eine fix gibt der nicht
 <a name="mockup"/>
 
 ## 3.2 Mockup
+Die Applikation sieht jetzt nicht mehr so aus wie es auf den Mockups ersichtlich ist.   
+Dah weitere funktionen und seiten hinzugekommen sind.
 
-  
+### 3.2.1 Verbindung's plan
+
+![Timetable-mockup](/img/Timetable-mockup.png)
+
+
 <a name="validation"/>
 
 ## 3.3 Validierung
