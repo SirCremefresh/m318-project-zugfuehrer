@@ -62,7 +62,7 @@ Das Gui Wird mit JavaFx entwickelt alle web calls werden in service ausgelagert.
 
 ## 3.1 Coderichtlinien
 ### 3.1.1 Namensgebung
-Alle Variablen namen und Methoden namen werden camelCase geschrieben.
+Alle Variablen namen und Methoden namen werden camelCase geschrieben.  
 Klassen werden mit PascalCase Geschrieben.
 
 ```java
