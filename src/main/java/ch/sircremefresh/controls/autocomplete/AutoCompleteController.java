@@ -136,7 +136,7 @@ public class AutoCompleteController extends AnchorPane {
 				Platform.runLater(() -> {
 					listView.visibleProperty().setValue(textField.focusedProperty().getValue());
 					if (textField.focusedProperty().getValue()) {
-						this.setMaxHeight(150);
+						this.setMaxHeight(200);
 					} else {
 						this.setMaxHeight(27);
 					}
