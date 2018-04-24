@@ -1,7 +1,7 @@
 package ch.sircremefresh.pages.timetable;
 
 import ch.sircremefresh.controls.autocomplete.AutoCompleteController;
-import ch.sircremefresh.controls.autocomplete.NumberInputController;
+import ch.sircremefresh.controls.numberinput.NumberInputController;
 import ch.sircremefresh.location.LocationService;
 import ch.sircremefresh.transport.TransportService;
 import ch.sircremefresh.transport.dto.ConnectionDto;
@@ -78,6 +78,7 @@ public class TimetableController {
 		StationSearchAutoComplete.setupAutoComplete(toAutoComplete, transportService);
 		setupDateTimePicker();
 		initializeConnectionTable();
+		fromAutoComplete.requestFocus();
 	}
 
 	@FXML

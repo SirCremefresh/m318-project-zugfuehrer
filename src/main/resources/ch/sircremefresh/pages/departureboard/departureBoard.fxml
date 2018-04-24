@@ -3,6 +3,7 @@
 <?import ch.sircremefresh.controls.autocomplete.AutoCompleteController?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import ch.sircremefresh.controls.actionButton.ActionButtonController?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml"
             xmlns="http://javafx.com/javafx"
             fx:controller="ch.sircremefresh.pages.departureboard.DepartureBoardController"
@@ -35,7 +36,7 @@
             AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="40.0"
     />
 
-    <Button
+    <ActionButtonController
             onAction="#showStationBoard"
             text="Create Board" mnemonicParsing="false"
             AnchorPane.topAnchor="40.0" AnchorPane.leftAnchor="320"

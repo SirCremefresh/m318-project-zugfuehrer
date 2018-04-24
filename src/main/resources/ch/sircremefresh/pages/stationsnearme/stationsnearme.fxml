@@ -4,6 +4,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.*?>
+<?import ch.sircremefresh.controls.actionButton.ActionButtonController?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml"
             xmlns="http://javafx.com/javafx"
             fx:controller="ch.sircremefresh.pages.stationsnearme.StationsNearMeController"
@@ -25,7 +26,7 @@
         </columns>
     </TableView>
 
-    <Button
+    <ActionButtonController
             onAction="#search"
             text="search"
             AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="40.0"

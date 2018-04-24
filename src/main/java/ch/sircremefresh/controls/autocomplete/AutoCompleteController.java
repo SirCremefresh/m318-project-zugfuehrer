@@ -129,7 +129,7 @@ public class AutoCompleteController extends AnchorPane {
 			// wait 1000 millis so that when list view is clicked it is getting cached before disappearing
 			new Thread(() -> {
 				try {
-					Thread.sleep(1000);
+					Thread.sleep(1500);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}

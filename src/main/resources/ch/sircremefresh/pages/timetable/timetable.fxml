@@ -3,7 +3,8 @@
 <?import ch.sircremefresh.controls.autocomplete.AutoCompleteController?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import ch.sircremefresh.controls.autocomplete.NumberInputController?>
+<?import ch.sircremefresh.controls.numberinput.NumberInputController?>
+<?import ch.sircremefresh.controls.actionButton.ActionButtonController?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml"
             xmlns="http://javafx.com/javafx"
             fx:controller="ch.sircremefresh.pages.timetable.TimetableController"
@@ -78,7 +79,7 @@
             AnchorPane.leftAnchor="380.0" AnchorPane.topAnchor="80.0"
     />
 
-    <Button
+    <ActionButtonController
             text="now"
             onAction="#setupDateTimePicker"
             prefWidth="60.0"
@@ -96,19 +97,19 @@
             AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="40.0"
     />
 
-    <Button
+    <ActionButtonController
             onAction="#searchConnections"
             text="Search"
             mnemonicParsing="false"
             AnchorPane.leftAnchor="598.0" AnchorPane.topAnchor="40.0"
     />
-    <Button
+    <ActionButtonController
             onAction="#showLocation"
             text="show location"
             mnemonicParsing="false"
             AnchorPane.leftAnchor="598.0" AnchorPane.topAnchor="80.0"
     />
-    <Button
+    <ActionButtonController
             onAction="#shareConnections"
             text="share Connections"
             mnemonicParsing="false"

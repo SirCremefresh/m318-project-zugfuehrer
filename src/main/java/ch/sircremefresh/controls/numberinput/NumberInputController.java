@@ -1,4 +1,4 @@
-package ch.sircremefresh.controls.autocomplete;
+package ch.sircremefresh.controls.numberinput;
 
 import javafx.scene.control.TextField;
 
