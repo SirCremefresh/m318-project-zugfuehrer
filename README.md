@@ -246,16 +246,16 @@ Die Aktivitätsdiagramme für die ersten 3 Anforderungen A001 & A002 & A003.
 
 # 6 Installation
 
-Man kann die Installations Datei von **[zugfuehrer installer](https://github.com/SirCremefresh/m318-project-zugfuehrer/releases/download/2/zugfuehrer.exe)** herunterladen.
-Dann muss man sie auf den Desktop kopieren.
-Dort Kann mann das Programm einfach starten.
-Wenn kein Java mit genügender version gefunden wird wird die Java Installieren Website geöffnet.
-Man darf diese Datei **Nicht** Verschieben und **Nicht** Umbenennen.
+1. Man kann die Installations Datei von **[zugfuehrer installer](https://github.com/SirCremefresh/m318-project-zugfuehrer/releases/download/2/zugfuehrer.exe)** herunterladen.
+2. Dann muss man sie von dem Download Verzeichnis auf den Desktop kopieren.
+3. Dort Kann mann das Programm einfach starten.
+4. Wenn kein Java mit genügender version gefunden wird wird die Java Installieren Website geöffnet.
+5. Man darf diese Datei **Nicht** Verschieben und **Nicht** Umbenennen.
 
 <a name="deinstall"/>
 
 # 6 Deinstallation
 
-Man kann die Deinstallation's Datei von  **[zugfuehrer uninstaller](https://github.com/SirCremefresh/m318-project-zugfuehrer/releases/download/2/uninstall.bat)** herunterladen.
-Diese Kann man dan einfach ausführen.
+1. Man kann die Deinstallation's Datei von  **[zugfuehrer uninstaller](https://github.com/SirCremefresh/m318-project-zugfuehrer/releases/download/2/uninstall.bat)** herunterladen.
+2. Diese Kann man dan einfach ausführen.
 
