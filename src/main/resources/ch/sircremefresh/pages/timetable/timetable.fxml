@@ -38,10 +38,21 @@
         </columns>
     </TableView>
 
+
+    <Label
+            text="Date:"
+            AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="65.0"
+    />
+
     <DatePicker
             fx:id="connectionDateDatePicker"
             prefWidth="250.0"
             AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="80.0"
+    />
+
+    <Label
+            text="Hour:"
+            AnchorPane.leftAnchor="310.0" AnchorPane.topAnchor="65.0"
     />
 
     <NumberInputController
@@ -54,6 +65,11 @@
             text="/"
             style="-fx-font-size: 20"
             AnchorPane.leftAnchor="360.0" AnchorPane.topAnchor="80.0"
+    />
+
+    <Label
+            text="Minute:"
+            AnchorPane.leftAnchor="380.0" AnchorPane.topAnchor="65.0"
     />
 
     <NumberInputController
