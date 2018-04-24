@@ -146,6 +146,36 @@ minuten jeh nur 2 zahlen lang sind.
 | 5       | Ich klicke auf den button "search" | Es werden nun 4 verbindungen in der liste angezeigt. Alle verbindungen haben eine ankunft's zeit nach 15 uhr |
 | 6       | Ich klicke auf den button "share Connections" | Es wird nun ein mail programm geöffnet wo man die gleichen verbindungen wie vorher in der liste angezeigt wurden jetzt in der nachricht stehen |
 
+### 3.4.2 Abfahrt's tafel
+**Beschreibung:** Verbindungen von einer Station aus anzeigen
+
+**Anforderung:** A007
+
+**Test-Szenario:**
+
+| Schritt | Aktivität                                                     | Erwartetes Resultat                                      |
+| ------- | ------------------------------------------------------------- | -------------------------------------------------------- | 
+| 1       | Ich klicke oben auf das tab mit dem namen "Abfahrtstafel" | Die Seite Wechselt |
+| 2       | Ich gebe in das Text feld "From" "Luzern ein" | es verändert sich sonst nichts |
+| 3       | Ich klicke auf den button "create Board" | In der Liste werden nun Verbindungen angezeigt bei denen "From" immer "Luzern" ist |
+
+
+### 3.4.3 Stationen In der Nähe
+**Beschreibung:** Die Stationen in der Nähe Anzeigen
+
+**Anforderung:** A007
+
+**Test-Szenario:**
+
+| Schritt | Aktivität                                                     | Erwartetes Resultat                                      |
+| ------- | ------------------------------------------------------------- | -------------------------------------------------------- | 
+| 1       | Ich klicke oben auf das tab mit dem namen "Stationen in der nähe" | Die Seite Wechselt |
+| 2       | Ich klicke auf den button "search" | Es Werden nun Stationen die in der nähe von dem aktuellen Computer sind angezeigt |
+| 3       | Ich klicke auf den button "show location" | es öffnet sich ein web browser bei dem ein marker beim Zürich HB ist |
+| 4       | Ich gebe im feld "Hour" "15" ein | es verändert sich sonst nichts |
+| 5       | Ich klicke auf den button "search" | Es werden nun 4 verbindungen in der liste angezeigt. Alle verbindungen haben eine ankunft's zeit nach 15 uhr |
+| 6       | Ich klicke auf den button "share Connections" | Es wird nun ein mail programm geöffnet wo man die gleichen verbindungen wie vorher in der liste angezeigt wurden jetzt in der nachricht stehen |
+
 
 <a name="usecase"/>
 
