@@ -149,7 +149,7 @@ minuten jeh nur 2 zahlen lang sind.
 ### 3.4.2 Abfahrt's tafel
 **Beschreibung:** Verbindungen von einer Station aus anzeigen
 
-**Anforderung:** A007
+**Anforderung:** A003
 
 **Test-Szenario:**
 
