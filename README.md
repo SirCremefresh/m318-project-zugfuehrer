@@ -163,12 +163,16 @@ minuten jeh nur 2 zahlen lang sind.
 
 <a name="bugs"/>
 
-## 4.2 Bugs und Fehler
-Es kann vorkommen dass wen man mit der maus zu schnell auf ein autocomplete klickt dass es selektiert wird.
+## 4.2 🐛 Bugs und Fehler
 
-Die resultate vom Autocomplete werden synchron geladen daher ist dass tippen sehr langsam.
+| Bug Nr |                                             Beschreibung                                                       |
+| ------ | -------------------------------------------------------------------------------------------------------------- |
+|  001   | Es kann vorkommen dass wen man mit der maus zu schnell auf ein autocomplete klickt dass es selektiert wird.    |
+|  002   | Die resultate vom Autocomplete werden synchron geladen daher ist dass tippen sehr langsam.                     |
+|  003   | Der Standort wird über die öffentliche Ip-Addresse ermittelt, daher ist er sehr ungenau.                       |
 
-Der Standort wird über die öffentliche Ip-Addresse ermittelt, daher ist er sehr ungenau.
+
+
 
 <a name="install"/>
 
